@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Concert+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&family=Righteous&family=STIX+Two+Text:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
-
+@import url('https://fonts.cdnfonts.com/css/nickelodeon-sans');
 /*
 font-family: 'Baloo Da 2', cursive;
 font-family: 'Concert One', cursive;
@@ -12,7 +12,7 @@ font-family: 'STIX Two Text', serif;
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Nickelodeon Sans', sans-serif;
     font-weight: bolder;
 }
 
