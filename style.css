@@ -28,19 +28,18 @@ header {
     flex-wrap: wrap;
 }
  
-/* ----- MENU CONTAINER ----- */
+/* ----- BANNER CONTAINER ----- */
 
-.menu {
+.banner-container {
     width: 100%;
     height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(245, 245, 245);
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 }
 
-.menu img {
+.banner-container img {
     border-radius: 5px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
     -4px 4px 8px rgba(0, 0, 0, 0.1), 
@@ -59,7 +58,6 @@ header {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); /* Sombra apenas na parte inferior */
-
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     flex-wrap: wrap;
@@ -83,6 +81,15 @@ header {
     p {
         margin: 0;
         font-size: 1.4rem;
+        text-shadow: 
+        2px 2px 0 black,   /* Sombra na diagonal inferior-direita */
+        -2px -2px 0 black, /* Sombra na diagonal superior-esquerda */
+        -2px 2px 0 black,  /* Sombra na diagonal inferior-esquerda */
+        2px -2px 0 black,  /* Sombra na diagonal superior-direita */
+        2px 0 0 black,     /* Sombra direita */
+        -2px 0 0 black,    /* Sombra esquerda */
+        0 2px 0 black,     /* Sombra embaixo */
+        0 -2px 0 black;    /* Sombra em cima */
     }
     
 }
@@ -98,6 +105,15 @@ header {
         font-size: 1.4rem;
         display: flex;
         align-items: center;
+        text-shadow: 
+        2px 2px 0 black,   /* Sombra na diagonal inferior-direita */
+        -2px -2px 0 black, /* Sombra na diagonal superior-esquerda */
+        -2px 2px 0 black,  /* Sombra na diagonal inferior-esquerda */
+        2px -2px 0 black,  /* Sombra na diagonal superior-direita */
+        2px 0 0 black,     /* Sombra direita */
+        -2px 0 0 black,    /* Sombra esquerda */
+        0 2px 0 black,     /* Sombra embaixo */
+        0 -2px 0 black;    /* Sombra em cima */
     }
     margin-bottom: .5rem;
     color: #FF5F01;
@@ -123,125 +139,102 @@ header {
 
 .image-button:hover {
     background-color: #B40303;
+    width: 112px;
+    height: 50px;
 }
 
-/* ----- MAIN CONTAINER ----- */
+/* ----- GRID CONTAINER ----- */
 
-.container {
-    width: 100%;
-    height: 100vh;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
     background: rgb(245, 245, 245);
+    /* border: 2px solid #75DD24; */
+    border: 2px solid #3A037B;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(117, 221, 36, 0.1);
 }
 
-
-
-/* ********************
-
-    ----- TEXT-BOX -----
-
-******************** */
-
-.text-box {
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%,-50%);
-    text-align: left;
-    width: 50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #FF5F01;
+    text-shadow: 
+    2px 2px 0 black,   /* Sombra na diagonal inferior-direita */
+    -2px -2px 0 black, /* Sombra na diagonal superior-esquerda */
+    -2px 2px 0 black,  /* Sombra na diagonal inferior-esquerda */
+    2px -2px 0 black,  /* Sombra na diagonal superior-direita */
+    2px 0 0 black,     /* Sombra direita */
+    -2px 0 0 black,    /* Sombra esquerda */
+    0 2px 0 black,     /* Sombra embaixo */
+    0 -2px 0 black;    /* Sombra em cima */
 }
-.header-title {
+
+.card form label, .card select {
+    display: block;
+    margin: 12px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.card select {
     width: 100%;
-    height: 100%;
+    border: 3px solid #75DD24;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.custom-select option:disabled {
+    color: gray;
+    font-style: italic;
+}
+
+.card input[type="radio"] {
+    margin-right: 8px;
+}
+
+
+/* ----- FOOTER CONTAINER ----- */
+
+footer {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.header-title h1 {
-    font-size: 5.5rem;
-    font-family: 'Righteous', serif;
-    font-weight: 500;
-    line-height: 6rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.header-title h1 span:nth-child(1) {
-    color: black;
-    text-shadow: .15rem .15rem 1px rgba(102, 255, 0, .8);
-}
-.header-title h1 span:nth-child(2) {
-    color: #66ff00;
-    text-shadow: .15rem .15rem 1px rgba(0, 0, 0, .8);
-    margin-left: 5rem;
-}
-.header-title h1 span:nth-child(3) {
-    color: black;
-    text-shadow: .15rem .15rem 1px rgba(102, 255, 0, .8);
-    margin-left: 10rem;
-}
-.header-title h1 span:nth-child(4) {
-    color: #66ff00;
-    text-shadow: .15rem .15rem 1px rgba(0, 0, 0, .8);
-    margin-left: 15rem;
-}
-
-.header-button {
-    width: 100%;
-    height: 7rem;
+.footer-container {
+    padding: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;}
+
+.save-button {
+    background-color: #75DD24;
+    color: #FF5F01;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.header-button a {
-    padding: 12px 20px;
-    font-family: 'Concert One', sans-serif;
-    border-bottom: 2px solid #66ff00;
-    font-size: 2em;
-    margin-left: 10rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: .1rem;
-    font-weight: 400;
-    color: black;
-    text-shadow: .1rem .1rem 1px rgba(102, 255, 0, .8);
-    transition: 0.5s;
+.custom-button:hover {
+    background-color: darkgreen; /* Muda a cor ao passar o mouse */
 }
 
-.header-button a:before{
-    content: '<';
-    color: #66ff00;
-    display: inline-block;
-    transition: 0.5s ease-in-out;
-    text-shadow: none;
-}
 
-.header-button a:hover:before {
-    transform: translateX(-1rem);
-    transition: transform 0.5s ease-in-out;
-}
 
-.header-button a:after{
-    content: '>';
-    color: #66ff00;
-    display: inline-block;
-    transition: 0.5s ease-in-out;
-    text-shadow: none;
-}
-
-.header-button a:hover:after {
-    transform: translateX(1rem);
-    transition: transform 0.5s ease-in-out;
-}
-
-.header-button a:hover {
-    color: #66ff00;
-    text-shadow: .15rem .15rem 1px rgba(0, 0, 0, .8);
-}
 
 /* ********************
 
