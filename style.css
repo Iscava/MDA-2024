@@ -181,7 +181,7 @@ header {
 .card form label, .card select {
     display: block;
     margin: 12px 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
 }
 
@@ -202,6 +202,11 @@ header {
     margin-right: 8px;
 }
 
+.card:first-child .primeira-palavra {
+    color: #75DD24;    
+}
+
+
 
 /* ----- FOOTER CONTAINER ----- */
 
@@ -216,12 +221,14 @@ footer {
     padding: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    margin-bottom: 2rem;
+}
 
 .save-button {
     background-color: #75DD24;
     color: #FF5F01;
-    border: none;
+    border-color: #FF5F01;
     border-radius: 8px;
     padding: 10px 20px;
     font-size: 1.2em;
@@ -229,8 +236,8 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.custom-button:hover {
-    background-color: darkgreen; /* Muda a cor ao passar o mouse */
+.save-button:hover {
+    background-color: #539e1a; /* Muda a cor ao passar o mouse */
 }
 
 
