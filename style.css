@@ -14,7 +14,7 @@ font-family: 'Nickelodeon Sans', sans-serif;
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Nickelodeon Sans', sans-serif;
+    font-family: 'Baloo Da 2', cursive;
     font-weight: bolder;
 }
 
@@ -127,16 +127,19 @@ header {
     justify-content: center;
     background-color: #C1282E;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: 1rem;
-}
-
-.image-button img {
-    width: 100px;
-    margin: 5px;
+    img {
+        width: 100px;
+        margin: 5px;
+    }
+    a {
+        margin: 0;
+        height: 47px;
+    }
 }
 
 .image-button:hover {
@@ -192,7 +195,6 @@ header {
     border: 3px solid #75DD24;
     border-radius: 5px;
     padding: 5px;
-    font-size: 1em;
 }
 
 .custom-select option:disabled {
@@ -209,7 +211,6 @@ header {
 }
 
 
-
 /* ----- FOOTER CONTAINER ----- */
 
 footer {
@@ -224,16 +225,16 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .save-button {
     background-color: #75DD24;
     color: #FF5F01;
     border-color: #FF5F01;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 10px 20px;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -242,8 +243,140 @@ footer {
     background-color: #539e1a; /* Muda a cor ao passar o mouse */
 }
 
+/* ********************
+
+    ----- MEDIA QUERIES -----
+
+******************** */
+
+@media only screen and (max-width: 379px) {
+    .banner-container {
+        height: 170px;
+        margin: 0.5rem 0;
+    }
+}
+
+@media only screen and (min-width: 380px) and (max-width: 479px) {
+    .banner-container {
+        height: 200px;
+        margin: 0.5rem 0;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 574px) {
+    .banner-container {
+        height: 250px;
+    }
+}
+
+@media only screen and (min-width: 575px) and (max-width: 639px) {
+    .banner-container {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .info {
+        width: 150px;
+        height: 100%;
+        p {
+            font-size: 1rem;
+        }
+    }
+    .info-venda {
+        width: 100%;
+        height: 50px;
+        p {
+            font-size: 1rem;
+        }
+        margin: 0 1.5rem;
+    }
+    .image-button {
+        margin-left: .5rem;
+        img {
+            width: 70px;
+            margin: 4px;
+        }
+        a {
+            margin: 0;
+            height: 33px;
+        }
+    }
+    .image-button:hover {
+        width: 81px;
+        height: 35px;
+    }
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .card form label, .card select {
+        font-size: 0.8rem;
+        margin: 3.5px 0;
+    }
+    .card h3 {
+        font-size: .9rem;
+    }
+    .footer-container {
+        padding: 0.3rem;
+        margin-bottom: 12px;
+    }
+    .save-button {
+        padding: 6px 12px;
+        font-size: 1rem;
+    }
+}
 
 
+@media only screen and (min-width: 480px) and (max-width: 639px) {
+    .info {
+        p {
+            font-size: 1.2rem;
+        }
+    }
+    .info-venda {
+        p {
+            font-size: 1.2rem;
+        }
+        margin-bottom: 0;
+    }
+    .image-button {
+        img {
+            width: 80px;
+            margin: 4px;
+        }
+        a {
+            margin: 0;
+            height: 38px;
+        }
+    }
+    .image-button:hover {
+        width: 91.5px;
+        height: 42px;
+    }
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .card form label, .card select {
+        font-size: 0.9rem;
+        margin: 6px 0;
+    }
+    .card h3 {
+        font-size: 1.03rem;
+    }
+    .footer-container {
+        padding: 0.5rem;
+    }
+    .save-button {
+        padding: 8px 16px;
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (min-width: 640px) and  (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 /* ********************
 
