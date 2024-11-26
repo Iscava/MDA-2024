@@ -18,23 +18,23 @@ const cardsData = [
         escolha: ""
     },
     {
-        pergunta: "MELHOR FESTA DO ANO",
+        pergunta: "FESTA DO ANO",
         respostas: ["Sanguinária e o Enigma do Mé", "Funkjama", "Interpoc", "Blackout", "Primeira do ano", "Operação LavaJato", "Embrulha meu Peru 2023", "Computaria"],
         escolha: ""
     },
     {
-        pergunta: "MELHOR CHOPPADA DO ANO",
+        pergunta: "CHOPPADA DO ANO",
         respostas: ["Vira Devasta", "Nutriodonto", "Chevet", "Choppalooza", "Furacão 2000", "Funkcina", "Choppada Mafiosa", "Swing", "Sedenta", "Baile da Mamata"],
         escolha: ""
     },
     {
         pergunta: "MELHOR FESTA TEMÁTICA DO ANO",
-        respostas: ["Analoween", "Mamaela", "Caloucom", "Carna Anal", "Chapados e pelados", "Operação Natal"],
+        respostas: ["Analloween", "Mamaela", "Caloucom", "CarnaAnal", "Chapados & Pelados", "Operação Natal"],
         escolha: ""
     },
     {
-        pergunta: "MELHOR SUNSET DO ANO",
-        respostas: ["Fenda do Bikini", "Tardezinha Magnosa", "Terapinga", "Bixarada", "De volta para o passado", "SociéPagode", "Sunshark", "Melatude", "Sunset dos Exquecidos", "TaTudoRosa"],
+        pergunta: "SUNSET DO ANO",
+        respostas: ["Fenda do Bikini", "Tardezinha Magnosa", "Terapinga", "Bixarada", "De volta para o passado", "SociéPagode", "Sunshark", "Melatude", "Sunset dos Exquecidos", "Mamaela"],
         escolha: ""
     },
     {
@@ -44,7 +44,7 @@ const cardsData = [
     },
     {
         pergunta: "MELHOR DCE DO ANO",
-        respostas: ["Prodose", "RelaMec", "Chuppadinha Sanguinária", "Baile du Nelsu", "Noite do Baguga", "DCE dos Campeões", "Melhor Sexta", "Tagafiosa"],
+        respostas: ["Prodose", "RelaMec", "Chuppadinha Sanguinária", "Baile du Nelsu", "Noite do Baguga", "DCE dos Campeões", "Melhor Sexta", "Tagafiosa", "Canil da Unificada"],
         escolha: ""
     },
     {
@@ -63,7 +63,7 @@ const cardsData = [
         escolha: ""
     },
     {
-        pergunta: "MELHOR QUASE CHOPPADA DO ANO",
+        pergunta: "MELHOR -QUASE- DO ANO",
         respostas: ["Salva Semestre", "Operação LavaJato (1° data)", "SunSalim", "Eclipse DJS", "Civil Minha Pic*", "FarmaFunk"],
         escolha: ""
     },
@@ -79,7 +79,7 @@ const cardsData = [
     },
     {
         pergunta: "MELHOR COLEÇÃO DO ANO",
-        respostas: ["Magnata", "Enigma", "Gambiarra", "Chefia", "Pintada", "Unidos do Vale", "Overdose", "Mafiosa"],
+        respostas: ["Magnata", "Enigma", "Gambiarra", "Chefia", "Pintada", "Tagarela", "Overdose", "Mafiosa", "Malagueta", "Vira-Lata"],
         escolha: ""
     },
 ];
@@ -87,8 +87,15 @@ const cardsData = [
 // Seleciona o container do grid
 const gridContainer = document.getElementById("grid-container");
 
+function embaralharArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
 // Função para criar os cards dinamicamente
 function criarCards(data) {
+    data.forEach(item => {
+        item.respostas = embaralharArray(item.respostas);
+    });
+    
     data.forEach((item, index) => {
         // Criação do card
         const card = document.createElement("div");
