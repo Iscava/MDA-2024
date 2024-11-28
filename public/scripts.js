@@ -197,7 +197,8 @@ async function registrarVotacao() {
         console.log(resultadoString);
 
         // Lógica para guardar os dados
-
+        const responseUpload = await uploadJsonFile(resultadoString);
+        console.log(responseUpload);
         alert("Votação registrada com sucesso!");
     } catch (error) {
         console.error("Erro ao registrar a votação:", error);
@@ -205,6 +206,32 @@ async function registrarVotacao() {
     }
 }
 
+async function uploadJsonFile(jsonString) {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            const response = await fetch('http://localhost:3000/uploadJsonFile', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ jsonString }), // Passa os dados como JSON
+            });
+          
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            
+            console.log('Resposta do servidor:', await response.text());
+          
+            console.log(`Chamada para fazer o upload do arquivo realizada com sucesso.`);
+            resolve();
+        } catch (err) {
+            console.error("Erro na chamada para fazer o upload do arquivo:", err);
+            reject(err);
+        }
+    });
+}
 
 // Chama a função para criar os cards
 criarCards(cardsData);
