@@ -12,28 +12,23 @@ app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos est�
 // Iniciar o servidor
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-  });
+});
 
 
 // Rota de upload para integração com o Google Cloud
 app.post('/uploadJsonFile', async (req, res) => {
-  try {
-    const { jsonString } = req.body;
-    
-    const fileName = "voto_" + Date.now() + ".json";
-
-    await criaArquivoJson(jsonString, fileName)
-
-    await salvaArquivo(fileName);
-
-    //await deletaArquivoJson(fileName);
-
-    res.status(200).send(`${fileName} salvo com sucesso.`);
-
-  } catch (error) {
-    console.error('Erro no upload do arquivo:', error);
-    res.status(500).send('Erro no upload do arquivo');
-  }
+    try {
+        const { jsonString } = req.body;  
+        const fileName = "voto_" + Date.now() + ".json";
+        await criaArquivoJson(jsonString, fileName)
+        await salvaArquivo(fileName);
+        //await deletaArquivoJson(fileName);
+        res.status(200).send(`${fileName} salvo com sucesso.`);
+    }
+    catch (error) {
+        console.error('Erro no upload do arquivo:', error);
+        res.status(500).send('Erro no upload do arquivo');
+    }
 });
 
 async function criaArquivoJson(jsonString, fileName) {
@@ -41,7 +36,6 @@ async function criaArquivoJson(jsonString, fileName) {
         try {
             // Determina o caminho completo do arquivo
             const filePath = path.join(__dirname, fileName);
-
             // Criar o arquivo .json
             fs.writeFile(filePath, jsonString, (err) => {
                 if (err) {
