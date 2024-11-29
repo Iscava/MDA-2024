@@ -18,70 +18,57 @@ const cardsData = [
         escolha: ""
     },
     {
-        pergunta: "FESTA DO ANO",
-        respostas: ["Sanguinária e o Enigma do Mé", "Funkjama", "Interpoc", "Blackout", "Primeira do ano", "Operação LavaJato", "Embrulha meu Peru 2023", "Computaria"],
-        escolha: ""
+        pergunta: "MELHOR FESTA DO ANO",
+        respostas: ["Sanguinária e o Enigma do Mé", "Funkjama", "Interpoc", "Blackout", "Primeira do ano", "Operação LavaJato", "ViraDevasta", "Computaria"]
     },
     {
-        pergunta: "CHOPPADA DO ANO",
-        respostas: ["Vira Devasta", "Nutriodonto", "Chevet", "Choppalooza", "Furacão 2000", "Funkcina", "Choppada Mafiosa", "Swing", "Sedenta", "Baile da Mamata"],
-        escolha: ""
+        pergunta: "MELHOR CHOPPADA DO ANO",
+        respostas: ["Baile das Agrárias", "Nutriodonto", "Chevet", "Choppalooza", "Furacão 2000", "Funkcina", "Choppada Mafiosa", "Swing", "Sedenta"]
     },
     {
         pergunta: "MELHOR FESTA TEMÁTICA DO ANO",
-        respostas: ["Analloween", "Mamaela", "Caloucom", "CarnaAnal", "Chapados & Pelados", "Operação Natal"],
-        escolha: ""
+        respostas: ["Analoween", "Mamaela", "Caloucom", "Carna Anal", "Chapados e pelados", "Operação Natal", "Baile da Mamata", "Embrulha meu Peru 2023"]
     },
     {
-        pergunta: "SUNSET DO ANO",
-        respostas: ["Fenda do Bikini", "Tardezinha Magnosa", "Terapinga", "Bixarada", "De volta para o passado", "SociéPagode", "Sunshark", "Melatude", "Sunset dos Exquecidos", "Mamaela"],
-        escolha: ""
+        pergunta: "MELHOR SUNSET DO ANO",
+        respostas: ["Fenda do Bikini", "Tardezinha Magnosa", "Terapinga", "Bixarada", "De volta para o passado", "SociéPagode", "Melatude", "Sunset dos Exquecidos", "Mamaela"]
     },
     {
         pergunta: "MELHOR EVENTO ESPORTIVO DO ANO",
-        respostas: ["Adidas Sunset Party", "Bearcup", "Intercap", "Tiffu", "Mario And Luigi's World"],
-        escolha: ""
+        respostas: ["Adidas Sunset Party", "Bearcup", "Intercap", "Tiffu", "Mario And Luigi's World", "Menor Inter"]
     },
     {
         pergunta: "MELHOR DCE DO ANO",
-        respostas: ["Prodose", "RelaMec", "Chuppadinha Sanguinária", "Baile du Nelsu", "Noite do Baguga", "DCE dos Campeões", "Melhor Sexta", "Tagafiosa", "Canil da Unificada"],
-        escolha: ""
+        respostas: ["Prodose", "RelaMec", "Chuppadinha Sanguinária", "Baile du Nelsu", "Noite do Baguga", "DCE dos Campeões", "Melhor Sexta", "Tagafiosa"]
     },
     {
         pergunta: "MELHOR ETÍLICOS DO ANO",
-        respostas: ["Colônia de Férias", "Menor Inter", "MecNutri", "Alcoolimpíadas"],
-        escolha: ""
+        respostas: ["Colônia de Férias", "Menor Inter", "MecNutri", "Alcoolimpíadas", "Sunshark"]
     },
     {
         pergunta: "MELHOR ATRAÇÃO DO ANO",
-        respostas: ["MC Saci (Sanguinária e o Enigma do Mé)", "Bonde das Maravilhas (Blackout)", "Rick + Jacaré (Funkjama)", "Henrique de Ferraz (Primeira do Ano)", "Rennan da Penha (Vira Devasta)", "MC GW + Ramemes (Embrulha meu Peru 2023)"],
-        escolha: ""
+        respostas: ["MC Saci (Sanguinária e o Enigma do Mé)", "Bonde das Maravilhas (Blackout)", "Rick + Jacaré (Funkjama)", "Henrique de Ferraz (Primeira do Ano)", "Rennan da Penha (Vira Devasta)", "MC GW + Ramemes (Embrulha meu Peru 2023)"]
     },
     {
         pergunta: "MELHOR PALCO DO ANO",
-        respostas: ["Primeira do Ano", "Sanguinária e o Enigma do Mé", "Funkjama", "Computaria"],
-        escolha: ""
+        respostas: ["Primeira do Ano", "Sanguinária e o Enigma do Mé", "Funkjama", "Computaria", "Analloween", "Operação LavaJato"]
     },
     {
-        pergunta: "MELHOR -QUASE- DO ANO",
-        respostas: ["Salva Semestre", "Operação LavaJato (1° data)", "SunSalim", "Eclipse DJS", "Civil Minha Pic*", "FarmaFunk"],
-        escolha: ""
+        pergunta: "MELHOR <QUASE> CHOPPADA DO ANO",
+        respostas: ["Salva Semestre", "Operação LavaJato (1° data)", "SunSalim", "Eclipse DJS", "Civil Minha Pic*", "FarmaFunk"]
     },
     {
         pergunta: "MELHOR BATERIA DO ANO",
-        respostas: ["Venenosa", "Mafiosa", "Dramática", "Sanguinária", "Analfabeta", "Tagarela", "Canina", "Madrasta"],
-        escolha: ""
+        respostas: ["Venenosa", "Mafiosa", "Dramática", "Sanguinária", "Analfabeta", "Tagarela", "Canina", "Madrasta"]
     },
     {
         pergunta: "MELHOR DJ DO ANO",
-        respostas: ["Niko", "Yong", "Berrix", "Walker", "Lousa", "Rodrigona", "Any Volazi", "Blenu", "Georgya", "Majuu", "Samuray"],
-        escolha: ""
+        respostas: ["Niko", "Yong", "Berrix", "Walker", "Lousa", "Rodrigona", "Any Volazi", "Blenu", "Georgya", "Samuray"]
     },
     {
         pergunta: "MELHOR COLEÇÃO DO ANO",
-        respostas: ["Magnata", "Enigma", "Gambiarra", "Chefia", "Pintada", "Tagarela", "Overdose", "Mafiosa", "Malagueta", "Vira-Lata"],
-        escolha: ""
-    },
+        respostas: ["Magnata", "Enigma", "Gambiarra", "Chefia", "Pintada", "Tagarela", "Overdose", "Mafiosa", "Malagueta", "Vira-lata"]
+    }
 ];
 
 // Seleciona o container do grid
