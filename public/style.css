@@ -387,11 +387,11 @@ footer {
 /*FadeIn Animation*/
 
 .fadeIn {
-    -webkit-animation: fadeIn 3s ease-in-out;
-    -moz-animation: fadeIn 3s ease-in-out;
-    -o-animation: fadeIn 3s ease-in-out;
-    -ms-animation: fadeIn 3s ease-in-out;
-    animation: fadeIn 3s ease-in-out;
+    -webkit-animation: fadeIn 1.5s ease-in-out;
+    -moz-animation: fadeIn 1.5s ease-in-out;
+    -o-animation: fadeIn 1.5s ease-in-out;
+    -ms-animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 @-webkit-keyframes fadeIn {
@@ -418,11 +418,11 @@ footer {
 /*FadeInTop Animation*/
 
 .fadeInBottom {
-    -webkit-animation: fadeInBottom 2s ease-in-out;
-    -moz-animation: fadeInBottom 2s ease-in-out;
-    -o-animation: fadeInBottom 2s ease-in-out;
-    -ms-animation: fadeInBottom 2s ease-in-out;
-    animation: fadeInBottom 2s ease-in-out;
+    -webkit-animation: fadeInBottom 1.5s ease-in-out;
+    -moz-animation: fadeInBottom 1.5s ease-in-out;
+    -o-animation: fadeInBottom 1.5s ease-in-out;
+    -ms-animation: fadeInBottom 1.5s ease-in-out;
+    animation: fadeInBottom 1.5s ease-in-out;
 }
 
 @-webkit-keyframes fadeInBottom {

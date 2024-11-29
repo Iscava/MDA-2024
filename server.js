@@ -3,11 +3,20 @@ const path = require('path');
 const { Storage } = require('@google-cloud/storage');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos estáticos (HTML, CSS, JS) da pasta "public"
+
+// Implementação de Rate Limiting usando a biblioteca express-rate-limit para limitar o número de requisições por ip em um tempo determinado
+const limiter = rateLimit({
+    windowMs: 15000, // 15 segundos
+    max: 1,
+    message: "Sem trapacear, espertin!!!. Espere 15 segundos após uma votação para votar novamente.",
+  });
+  app.use(limiter);  
 
 // Iniciar o servidor
 app.listen(port, () => {
@@ -19,69 +28,24 @@ app.listen(port, () => {
 app.post('/uploadJsonFile', async (req, res) => {
   try {
     const { jsonString } = req.body;
-    
-    const fileName = "voto_" + Date.now() + ".json";
-
-    await criaArquivoJson(jsonString, fileName)
-
-    await salvaArquivo(fileName);
-
-    //await deletaArquivoJson(fileName);
-
-    res.status(200).send(`${fileName} salvo com sucesso.`);
-
+    res.status(200).send(await salvaArquivo(jsonString));
   } catch (error) {
-    console.error('Erro no upload do arquivo:', error);
-    res.status(500).send('Erro no upload do arquivo');
+    res.status(500).send(error);
   }
 });
 
-async function criaArquivoJson(jsonString, fileName) {
-    return new Promise((resolve, reject) => {
-        try {
-            // Determina o caminho completo do arquivo
-            const filePath = path.join(__dirname, fileName);
-
-            // Criar o arquivo .json
-            fs.writeFile(filePath, jsonString, (err) => {
-                if (err) {
-                    console.error("Erro ao criar o arquivo:", err);
-                    reject(err); // Rejeita a Promise em caso de erro
-                    return; // Sai da função após o erro
-                }
-                console.log(`Arquivo ${fileName} criado com sucesso!`);
-                resolve(); // Resolve a Promise quando o arquivo é criado
-            });
-        } catch (err) {
-            console.error("Erro inesperado ao criar o arquivo:", err);
-            reject(err); // Rejeita a Promise em caso de exceção
-        }
-    });
-}
-
-async function deletaArquivoJson(fileName) {
-    return new Promise(async (resolve, reject) => {
-        try {
-            // Exclui o arquivo usando fs.unlink
-            await fs.unlink(fileName);
-            console.log(`Arquivo ${fileName} deletado com sucesso.`);
-            resolve();
-        } catch (err) {
-            console.error("Erro ao deletar o arquivo:", err);
-            reject(err);
-        }
-    });
-}
-
 // Função para guardar dados no Google Cloud
-async function salvaArquivo(jsonFileName) {
+async function salvaArquivo(json) {
     return new Promise(async (resolve, reject) => {
         try {
+            // Define o nome do arquivo
+            jsonFileName = "voto_" + Date.now() + ".json";
+
             // The ID of your GCS bucket
             const bucketName = 'votos_mda_2024';
 
             // The contents that you want to upload
-            const contents = './' + jsonFileName;
+            const contents = json;
 
             // Creates a client
             const storage = new Storage();
@@ -109,11 +73,9 @@ async function salvaArquivo(jsonFileName) {
             // Passes the location to file.save so you don't need to authenticate this call
             await file.save(contents, options);
 
-            console.log(`${destFileName} uploaded to ${bucketName}`);
-            resolve(`${fileName} uploaded to ${bucketName}`);
+            resolve(`Upload do arquivo ${jsonFileName} para ${bucketName} realizado com sucesso.`);
         } catch (err) {
-            console.error("Error uploading file:", err);
-            reject(err);
+            reject("Erro no upload do arquivo:" + err);
         }
     });
 }
