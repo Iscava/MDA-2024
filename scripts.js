@@ -6,23 +6,23 @@
 const cardsData = [
     {
         pergunta: "MELHOR FESTA DO ANO",
-        respostas: ["Sanguinária e o Enigma do Mé", "Funkjama", "Interpoc", "Blackout", "Primeira do ano", "Operação LavaJato", "Embrulha meu Peru 2023", "Computaria"]
+        respostas: ["Sanguinária e o Enigma do Mé", "Funkjama", "Interpoc", "Blackout", "Primeira do ano", "Operação LavaJato", "ViraDevasta", "Computaria"]
     },
     {
         pergunta: "MELHOR CHOPPADA DO ANO",
-        respostas: ["Vira Devasta", "Nutriodonto", "Chevet", "Choppalooza", "Furacão 2000", "Funkcina", "Choppada Mafiosa", "Swing", "Sedenta", "Baile da Mamata"]
+        respostas: ["Baile das Agrárias", "Nutriodonto", "Chevet", "Choppalooza", "Furacão 2000", "Funkcina", "Choppada Mafiosa", "Swing", "Sedenta"]
     },
     {
         pergunta: "MELHOR FESTA TEMÁTICA DO ANO",
-        respostas: ["Analoween", "Mamaela", "Caloucom", "Carna Anal", "Chapados e pelados", "Operação Natal"]
+        respostas: ["Analoween", "Mamaela", "Caloucom", "Carna Anal", "Chapados e pelados", "Operação Natal", "Baile da Mamata", "Embrulha meu Peru 2023"]
     },
     {
         pergunta: "MELHOR SUNSET DO ANO",
-        respostas: ["Fenda do Bikini", "Tardezinha Magnosa", "Terapinga", "Bixarada", "De volta para o passado", "SociéPagode", "Sunshark", "Melatude", "Sunset dos Exquecidos", "TaTudoRosa"]
+        respostas: ["Fenda do Bikini", "Tardezinha Magnosa", "Terapinga", "Bixarada", "De volta para o passado", "SociéPagode", "Melatude", "Sunset dos Exquecidos", "Mamaela"]
     },
     {
         pergunta: "MELHOR EVENTO ESPORTIVO DO ANO",
-        respostas: ["Adidas Sunset Party", "Bearcup", "Intercap", "Tiffu", "Mario And Luigi's World"]
+        respostas: ["Adidas Sunset Party", "Bearcup", "Intercap", "Tiffu", "Mario And Luigi's World", "Menor Inter"]
     },
     {
         pergunta: "MELHOR DCE DO ANO",
@@ -30,7 +30,7 @@ const cardsData = [
     },
     {
         pergunta: "MELHOR ETÍLICOS DO ANO",
-        respostas: ["Colônia de Férias", "Menor Inter", "MecNutri", "Alcoolimpíadas"]
+        respostas: ["Colônia de Férias", "Menor Inter", "MecNutri", "Alcoolimpíadas", "Sunshark"]
     },
     {
         pergunta: "MELHOR ATRAÇÃO DO ANO",
@@ -38,10 +38,10 @@ const cardsData = [
     },
     {
         pergunta: "MELHOR PALCO DO ANO",
-        respostas: ["Primeira do Ano", "Sanguinária e o Enigma do Mé", "Funkjama", "Computaria"]
+        respostas: ["Primeira do Ano", "Sanguinária e o Enigma do Mé", "Funkjama", "Computaria", "Analloween", "Operação LavaJato"]
     },
     {
-        pergunta: "MELHOR QUASE CHOPPADA DO ANO",
+        pergunta: "MELHOR <QUASE> CHOPPADA DO ANO",
         respostas: ["Salva Semestre", "Operação LavaJato (1° data)", "SunSalim", "Eclipse DJS", "Civil Minha Pic*", "FarmaFunk"]
     },
     {
@@ -50,11 +50,11 @@ const cardsData = [
     },
     {
         pergunta: "MELHOR DJ DO ANO",
-        respostas: ["Niko", "Yong", "Berrix", "Walker", "Lousa", "Rodrigona", "Any Volazi", "Blenu", "Georgya", "Majuu", "Samuray"]
+        respostas: ["Niko", "Yong", "Berrix", "Walker", "Lousa", "Rodrigona", "Any Volazi", "Blenu", "Georgya", "Samuray"]
     },
     {
         pergunta: "MELHOR COLEÇÃO DO ANO",
-        respostas: ["Magnata", "Enigma", "Gambiarra", "Chefia", "Pintada", "Vale", "Overdose", "Mafiosa"]
+        respostas: ["Magnata", "Enigma", "Gambiarra", "Chefia", "Pintada", "Tagarela", "Overdose", "Mafiosa", "Malagueta", "Vira-lata"]
     },
     { // CATEGORIA ESPECIAL
         pergunta: "ESPECIAL: ATLÉTICA COM OS PIORES BEIJOS DO ANO 🤢",
