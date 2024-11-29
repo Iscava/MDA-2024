@@ -1,6 +1,5 @@
-/*
-    Criação dos cards dinâmicamente:
-*/
+//const urlDom = "http://localhost:3000"; // Local
+const urlDom = "https://mda.atleticaenigma.com.br"; // Produção
 
 // Lista de perguntas e respostas
 const cardsData = [
@@ -226,7 +225,7 @@ async function registrarVotacao() {
 async function uploadJsonFile(jsonString) {
     return new Promise(async (resolve, reject) => {
         try {
-            const response = await fetch('http://localhost:3000/uploadJsonFile', {
+            const response = await fetch(urlDom + '/uploadJsonFile', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
