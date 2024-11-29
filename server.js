@@ -21,7 +21,7 @@ const limiter = rateLimit({
 // Iniciar o servidor
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-  });
+});
 
 
 // Rota de upload para integração com o Google Cloud
