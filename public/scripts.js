@@ -87,6 +87,9 @@ const cardsData = [
 // Seleciona o container do grid
 const gridContainer = document.getElementById("grid-container");
 
+// Cria o honeypot
+const honeypot = document.createElement("input");
+
 function embaralharArray(array) {
     return array.sort(() => Math.random() - 0.5);
 }
@@ -100,6 +103,7 @@ function criarCards(data) {
         // Criação do card
         const card = document.createElement("div");
         card.className = "card";
+       // card.classList.add('fadeIn'); // Aplica animação para transição suave
 
         // Adiciona o título da pergunta
         const titulo = document.createElement("h3");
@@ -134,7 +138,7 @@ function criarCards(data) {
                 form.appendChild(label);
             });
         } else {
-            // Último card: Adiciona um select com as opções
+            // Primeiro card: Adiciona um select com as opções
             const select = document.createElement("select");
             select.name = `pergunta${index}`;
             select.classList.add("custom-select");
@@ -168,11 +172,34 @@ function criarCards(data) {
         card.appendChild(form);
         gridContainer.appendChild(card);
     });
+
+    // Implementação do HoneyPot para bot
+    const form = document.createElement("form");
+    honeypot.type = "text";
+    honeypot.name = "honeypot"; // Nome do campo honeypot
+    honeypot.style.display = "none"; // Torna o campo invisível
+    form.appendChild(honeypot)
+    gridContainer.appendChild(form)
+
+    // Adiciona o scroll para o topo após a criação dos cards
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, 100); // Pequeno atraso para garantir que a página foi carregada
 }
 
 // Função para registrar a votação
 async function registrarVotacao() {
     try {
+        if (honeypot.value) {
+            alert("Bot detectado! Você acha que eu sou trouxa ?");
+            location.reload();
+            return;
+        }
+
         // Obter o IP do usuário
         const response = await fetch('https://api64.ipify.org?format=json');
         const data = await response.json();
@@ -197,14 +224,43 @@ async function registrarVotacao() {
         console.log(resultadoString);
 
         // Lógica para guardar os dados
+        await uploadJsonFile(resultadoString).then((response) => {
+            console.log(response);
+            alert("Votação registrada com sucesso!");
+            location.reload();
+            return;
+        });
 
-        alert("Votação registrada com sucesso!");
     } catch (error) {
-        console.error("Erro ao registrar a votação:", error);
-        alert("Erro ao registrar a votação. Tente novamente.");
+        alert(error);
     }
 }
 
+async function uploadJsonFile(jsonString) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch('http://localhost:3000/uploadJsonFile', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ jsonString }), // Passa os dados como JSON
+            });
+
+            if (!response.ok) {
+                if (response.status === 429) {
+                    reject(await response.text());
+                } else {
+                    reject("Erro ao registrar a votação. Tente novamente.");
+                }
+            }
+                      
+            resolve(await response.text());
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
 
 // Chama a função para criar os cards
 criarCards(cardsData);
