@@ -6,7 +6,6 @@ const fs = require('fs');
 const rateLimit = require('express-rate-limit');
 
 const app = express();
-const port = 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos estáticos (HTML, CSS, JS) da pasta "public"
 
@@ -19,10 +18,10 @@ const limiter = rateLimit({
   app.use(limiter);  
 
 // Iniciar o servidor
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
-
 
 // Rota de upload para integração com o Google Cloud
 app.post('/uploadJsonFile', async (req, res) => {
