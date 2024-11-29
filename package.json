@@ -1,0 +1,24 @@
+{
+    "name": "mda-2024",
+    "version": "1.0.0",
+    "type": "commonjs",
+    "main": "app.js",
+    "dependencies": {
+        "@google-cloud/storage": "^7.14.0",
+        "express": "^4.21.1",
+        "express-rate-limit": "^7.4.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node dist/server.js",
+        "dev": "nodemon server.js",
+        "build": "mkdir -p dist && cp -R public  server.js package.json dist/"
+    },
+    "keywords": [],
+    "author": "VICTOR ISCAVA",
+    "license": "MIT",
+    "description": "This simple project is about an annual event (MDA) where people vote for the best of the year in some categories related to the college sports organizations.",
+    "devDependencies": {
+        "nodemon": "^3.1.7"
+    }
+}
