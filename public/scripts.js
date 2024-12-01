@@ -1,5 +1,5 @@
 //const urlDom = "http://localhost:3000"; // Local
-const urlDom = "https://mda.atleticaenigma.com.br"; // Produção
+const urlDom = "https://atleticaenigma.com.br"; // Produção
 
 // Lista de perguntas e respostas
 const cardsData = [
@@ -219,6 +219,7 @@ async function registrarVotacao() {
 
     } catch (error) {
         alert(error);
+        location.reload();
     }
 }
 

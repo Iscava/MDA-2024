@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos est�
 
 // Implementação de Rate Limiting usando a biblioteca express-rate-limit para limitar o número de requisições por ip em um tempo determinado
 const limiter = rateLimit({
-    windowMs: 15000, // 15 segundos
+    windowMs: 3000, // 3 segundos
     max: 1,
-    message: "Sem trapacear, espertin!!!. Espere 15 segundos após uma votação para votar novamente.",
+    message: "Sem trapacear, espertin!!!. Espere 3 segundos para votar.",
   });
   app.use(limiter);  
 
