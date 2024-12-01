@@ -4,18 +4,19 @@ const { Storage } = require('@google-cloud/storage');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos estáticos (HTML, CSS, JS) da pasta "public"
 
 // Implementação de Rate Limiting usando a biblioteca express-rate-limit para limitar o número de requisições por ip em um tempo determinado
-const limiter = rateLimit({
+/*const limiter = rateLimit({
     windowMs: 3000, // 3 segundos
     max: 1,
     message: "Sem trapacear, espertin!!!. Espere 3 segundos para votar.",
   });
-  app.use(limiter);  
+  app.use(limiter);  */
 
 // Iniciar o servidor
 const port = process.env.PORT || 3000;

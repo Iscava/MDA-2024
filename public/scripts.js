@@ -50,7 +50,7 @@ const cardsData = [
     },
     {
         pergunta: "MELHOR PALCO DO ANO",
-        respostas: ["Primeira do Ano", "Sanguinária e o Enigma do Mé", "Funkjama", "Computaria", "Analloween", "Operação LavaJato"]
+        respostas: ["Primeira do Ano", "Funkjama", "Computaria", "Analloween", "Operação LavaJato"]
     },
     {
         pergunta: "MELHOR <QUASE> CHOPPADA DO ANO",
