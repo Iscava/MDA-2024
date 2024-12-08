@@ -115,7 +115,7 @@ function criarCards(data) {
                 // Evento onchange para capturar a escolha
                 radio.addEventListener("change", () => {
                     item.escolha = resposta; // Atualiza o campo "escolha"
-                    console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
+                    //console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
                 });
 
                 label.appendChild(radio);
@@ -148,7 +148,7 @@ function criarCards(data) {
             // Evento onchange para capturar a escolha
             select.addEventListener("change", () => {
                 item.escolha = select.value; // Atualiza o campo "escolha"
-                console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
+                //console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
             });
 
             form.appendChild(select);
@@ -207,11 +207,11 @@ async function registrarVotacao() {
             votacao: JSON.stringify(votacao)
         };
         const resultadoString = JSON.stringify(resultado, null, 2);
-        console.log(resultadoString);
+        //console.log(resultadoString);
 
         // Lógica para guardar os dados
         await uploadJsonFile(resultadoString).then((response) => {
-            console.log(response);
+            //console.log(response);
             alert("Votação registrada com sucesso!");
             location.reload();
             return;
