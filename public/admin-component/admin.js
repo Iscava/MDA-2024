@@ -2,6 +2,7 @@ const urlDom = "http://localhost:3000"; // Local
 //const urlDom = "https://atleticaenigma.com.br"; // Produção
 
 async function buscaVotos() {
+    console.log("teste")
     const url = urlDom + '/buscaVotos';
     try {
         const response = await fetch(url, {
@@ -11,8 +12,7 @@ async function buscaVotos() {
             },
         });
 
-        console.log(response.text())
-
+        console.log(await response.text())
         // Verifica se a resposta é bem-sucedida
         if (!response.ok) {
             throw new Error(await response.text());
@@ -30,4 +30,6 @@ async function buscaVotos() {
 
 
 // Ao iniciar
-buscaVotos();
+const response = buscaVotos();
+
+console.log(response)

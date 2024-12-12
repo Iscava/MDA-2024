@@ -1,10 +1,23 @@
-//const urlDom = "http://localhost:3000"; // Local
-const urlDom = "https://atleticaenigma.com.br"; // Produção
+const urlDom = "http://localhost:3000"; // Local
+//const urlDom = "https://atleticaenigma.com.br"; // Produção
 
 // Lista de perguntas e respostas
 const cardsData = [
     { // CATEGORIA ESPECIAL
-        pergunta: "ATLÉTICA COM OS PIORES BEIJOS DO ANO 🤢",
+        pergunta: "PIOR ATLÉTICA DO ANO 👎",
+        respostas: [
+            "Tagarela", "Sedentária", "Soberana", "Malcriada", "Magnata", "Kraken", "Predadora",
+            "Devasta", "Banguela", "Unidos do Vale", "Sanguinária", "Malagueta", "Sulfurosa",
+            "Desastrosa", "Pintada", "Mafiosa", "Enigma", "Chefia", "Faminta", "Mercenária",
+            "Trepadeira", "Unificada", "Overdose", "Madrasta", "Gambiarra", "Quimera",
+            "Problemática", "Neurótica", "Vira-Lata", "Agro", "Picareta", "Subversiva",
+            "Analfabeta", "Improdutiva", "Simbiótica", "Berranteira", "Mecânica", "Hamiltoniana",
+            "Venenosa", "Tectônica", "Arregaçada", "Dolorosa", "Dramática"
+        ],
+        escolha: ""
+    },
+    { // CATEGORIA ESPECIAL
+        pergunta: "MELHOR TORCIDA DO ANO 🗣",
         respostas: [
             "Tagarela", "Sedentária", "Soberana", "Malcriada", "Magnata", "Kraken", "Predadora",
             "Devasta", "Banguela", "Unidos do Vale", "Sanguinária", "Malagueta", "Sulfurosa",
@@ -94,6 +107,9 @@ function criarCards(data) {
         // Adiciona o título da pergunta
         const titulo = document.createElement("h3");
         if (index == 0) {
+            titulo.innerHTML = `<span class="primeira-palavra">${"ESPECIAL: "}</span><span style="color: darkred">${item.pergunta}</span>`;
+        }
+        else if (index == 1) {
             titulo.innerHTML = `<span class="primeira-palavra">${"ESPECIAL: "}</span>` + item.pergunta;
         } else {
             titulo.textContent = item.pergunta;
@@ -102,7 +118,7 @@ function criarCards(data) {
 
         // Criação do formulário com as opções
         const form = document.createElement("form");
-        if (index > 0) {
+        if (index > 1) {
             // Adiciona as opções de resposta como rádio
             item.respostas.forEach((resposta) => {
                 const label = document.createElement("label");
@@ -115,7 +131,7 @@ function criarCards(data) {
                 // Evento onchange para capturar a escolha
                 radio.addEventListener("change", () => {
                     item.escolha = resposta; // Atualiza o campo "escolha"
-                    console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
+                    //console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
                 });
 
                 label.appendChild(radio);
@@ -148,7 +164,7 @@ function criarCards(data) {
             // Evento onchange para capturar a escolha
             select.addEventListener("change", () => {
                 item.escolha = select.value; // Atualiza o campo "escolha"
-                console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
+                //console.log(`Escolha na pergunta "${item.pergunta}": ${item.escolha}`);
             });
 
             form.appendChild(select);
@@ -185,6 +201,7 @@ async function registrarVotacao() {
             location.reload();
             return;
         }
+        spinner(true);
 
         // Obter o IP do usuário
         const response = await fetch('https://api64.ipify.org?format=json');
@@ -207,18 +224,20 @@ async function registrarVotacao() {
             votacao: JSON.stringify(votacao)
         };
         const resultadoString = JSON.stringify(resultado, null, 2);
-        console.log(resultadoString);
+        //console.log(resultadoString);
 
         // Lógica para guardar os dados
         await uploadJsonFile(resultadoString).then((response) => {
-            console.log(response);
+            //console.log(response);
             alert("Votação registrada com sucesso!");
             location.reload();
             return;
         });
+        spinner(false);
 
     } catch (error) {
         alert(error);
+        spinner(false);
         location.reload();
     }
 }
@@ -247,6 +266,15 @@ async function uploadJsonFile(jsonString) {
             reject(err);
         }
     });
+}
+
+function spinner(show) {
+    const spinner = document.getElementById("spinner-overlay");
+    if (show) {
+      spinner.style.display = "flex";
+    } else {
+      spinner.style.display = "none";
+    }
 }
 
 // Chama a função para criar os cards

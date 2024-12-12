@@ -168,7 +168,7 @@ async function processaVotos() {
       const listaDeVotos = await buscaVotos();
       // Objeto para armazenar contagens
       const resultados = {};
-
+      console.log(listaDeVotos.length)
       // Processa cada conjunto de votos
       listaDeVotos.forEach((votos, index) => {
         if (!Array.isArray(votos)) {
