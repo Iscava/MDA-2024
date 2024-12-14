@@ -1,5 +1,5 @@
-const urlDom = "http://localhost:3000"; // Local
-//const urlDom = "https://atleticaenigma.com.br"; // Produção
+//const urlDom = "http://localhost:3000"; // Local
+const urlDom = "https://atleticaenigma.com.br"; // Produção
 
 // Lista de perguntas e respostas
 const cardsData = [
@@ -229,12 +229,21 @@ async function registrarVotacao() {
         // Lógica para guardar os dados
         await uploadJsonFile(resultadoString).then((response) => {
             //console.log(response);
-            alert("Votação registrada com sucesso!");
-            location.reload();
-            return;
-        });
-        spinner(false);
 
+            // Substitui o spinner pelo ícone de sucesso
+            const spinner = document.querySelector('#spinner-overlay .spinner');
+            spinner.outerHTML = '<i class="fa-solid fa-circle-check" style="color: green; font-size: 3rem;"></i>';
+            const spinnerText = document.querySelector('#spinner-overlay p');
+            spinnerText.textContent = 'Seu voto foi registrado com sucesso!';
+            spinnerText.style.color = 'green';
+        });
+
+        setTimeout(() => {
+            spinner(false);
+            location.reload();
+        }, 2000);
+
+        return;
     } catch (error) {
         alert(error);
         spinner(false);
