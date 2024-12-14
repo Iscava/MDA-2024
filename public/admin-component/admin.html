@@ -11,21 +11,28 @@
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="manifest" href="icons/site.webmanifest">
 
+    <script src="https://kit.fontawesome.com/be5d0e0ffa.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body onselectstart="return false">
+    <div id="spinner-overlay">
+      <div class="spinner"></div>
+      <p style="margin: 2rem 0 0 0;">Aguarde um momento!</p>
+    </div>
+
     <header class="fadeIn">
         <div class="titulo-container">
             <h1>Resultados</h1>
         </div>
         <div class="subtitulo-container">
             <h4>
-                Aqui podemos visualizar os resultados atualizados e encerrar a votação quando necessário.
+                Aqui podemos visualizar os resultados atualizados.
             </h4>
         </div>
         <div class="botoes-container">
-          <button class="btn-att" type="button" onclick="buscaVotos()">Atualizar resultados</button>
-          <button class="btn-enc" type="button">Encerrar votação</button>
+          <button class="btn-att" type="button" onclick="atualizaResultados()">Atualizar resultados</button>
+          <!--<button class="btn-enc" type="button">Encerrar votação</button>-->
         </div>
     </header>
 

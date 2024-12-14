@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
+const pLimit = require('p-limit');
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos est�
   app.use(limiter);  */
 
 // Rota para /admin
-app.get('/admin', (req, res) => {
+app.get('/ultrasecreto', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin-component', 'admin.html'));
 });
 
@@ -102,7 +103,7 @@ async function buscaVotos() {
             const storage = new Storage();
             
             // resolve(await storage.bucket('votos_mda_2024').getFiles());
-
+            const limit = pLimit(120); // Processa até 100 arquivos simultaneamente
             const votosPromises = [];
 
             storage.bucket('votos_mda_2024').getFilesStream()
@@ -113,22 +114,18 @@ async function buscaVotos() {
             .on('data', (file) => {
               // Adiciona a promessa de leitura do arquivo na lista
               votosPromises.push(
-                new Promise((resolveFile, rejectFile) => {
-                  const stream = file.createReadStream();
-                  let fileContent = '';
-    
-                  stream
+                limit(() =>
+                  new Promise((resolveFile, rejectFile) => {
+                    const stream = file.createReadStream();
+                    let fileContent = '';
+                    stream
                     .on('data', (chunk) => {
                       fileContent += chunk; // Acumula os dados do stream
                     })
                     .on('end', () => {
                       try {
-                        const jsonContent = JSON.parse(fileContent); // Parse do JSON
-                        if (jsonContent.votacao) {
-                          resolveFile(JSON.parse(jsonContent.votacao)); // Retorna apenas o campo 'votacao' como um array
-                        } else {
-                          resolveFile(null); // Caso não exista o campo 'votacao'
-                        }
+                        const jsonContent = JSON.parse(fileContent);                       
+                        resolveFile(jsonContent.votacao ? JSON.parse(jsonContent.votacao) : null);
                       } catch (err) {
                         console.error(`Erro ao processar o arquivo ${file.name}:`, err);
                         rejectFile(err); // Rejeita a promessa se houver erro
@@ -138,7 +135,8 @@ async function buscaVotos() {
                       console.error(`Erro ao ler o arquivo ${file.name}:`, err);
                       rejectFile(err); // Rejeita a promessa em caso de erro no stream
                     });
-                })
+                  })
+                )
               );
             })
             .on('end', async () => {
@@ -177,6 +175,25 @@ async function processaVotos() {
         }
 
         votos.forEach(({ pergunta, escolha }) => {
+          if (pergunta.includes("ATRA")) {
+            pergunta = "MELHOR ATRAÇÃO DO ANO";
+          }
+            
+          if (pergunta.includes("LICOS")) {
+            pergunta = "MELHOR ETÍLICOS DO ANO";
+          }
+
+          if (pergunta === "MELHOR DCE DO ANO" && escolha.includes("Sanguin")) {
+            escolha ="Chuppadinha Sanguinária";
+          }
+          if (pergunta === "MELHOR DCE DO ANO" && escolha.includes("DCE dos Campe")) {
+            escolha = "DCE dos Campeões";
+          }
+      
+          if (pergunta === "MELHOR ETÍLICOS DO ANO" && escolha.includes("nia de F")) {
+            escolha = "Colônia de Férias";
+          }
+
           // Inicializa se necessário
           if (!resultados[pergunta]) {
             resultados[pergunta] = {};
